@@ -1,5 +1,5 @@
 <template>
-    <el-aside width="200px" >
+    <el-aside width="200px">
         <el-menu class="el-menu-vertical-demo" background-color="#545c64" text-color="#fff" :collapse="false">
             <el-menu-item :index="item.path" v-for="item in noChildren()" :key="item.path">
                 <component class="icons" :is="item.icon"></component>
@@ -86,5 +86,9 @@ export default {
 .icons {
     width: 18px;
     height: 18px;
+}
+.el-menu{
+    height:100%;
+    border-right: none;
 }
 </style>

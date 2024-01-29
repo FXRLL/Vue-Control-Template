@@ -7,7 +7,7 @@
                     <Menu />
                 </el-icon>
             </el-button>
-            首页
+            <h3>首页</h3>
         </div>
         <div class="r-content">
             <el-dropdown>
@@ -26,30 +26,43 @@
 </template>
 
 <script>
-    export default{
-        setup(){
-            const getImgSrc=(user)=>{
-                return new URL(`../assets/images/${user}.png`,import.meta.url).href;
-            };
-            return{
-                getImgSrc,
-            };
-        }
+export default {
+    setup() {
+        const getImgSrc = (user) => {
+            return new URL(`../assets/images/${user}.png`, import.meta.url).href;
+        };
+        return {
+            getImgSrc,
+        };
     }
+}
 </script>
 
 <style lang="less" scoped>
-header{
-    display:flex;
+header {
+    display: flex;
     justify-content: space-between;
     align-items: center;
-    width:100%;
+    width: 100%;
+    background-color: #333;
 }
+
 .r-content {
     .user-image {
         width: 40px;
         height: 40px;
         border-radius: 50%;
+    }
+}
+
+.l-content {
+    display: flex;
+    align-items: center;
+    .el-button{
+        margin-right:20px;
+    }
+    h3 {
+        color: #fff;
     }
 }
 </style>
