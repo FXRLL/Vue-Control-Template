@@ -1,17 +1,19 @@
 <script>
 import { defineComponent } from 'vue';
 import CommonHeader from '../components/CommonHeader.vue'
+import CommonAside from '../components/CommonAside.vue'
 export default defineComponent({
     components: {
         CommonHeader,
+        CommonAside,
     },
 });
-
 </script>
+
 <template>
     <div class="common-layout">
         <el-container class="lay-container">
-            Aside
+            <CommonAside></CommonAside>
             <el-container class="r-container">
                 <CommonHeader></CommonHeader>
                 <el-main>Main
@@ -23,7 +25,7 @@ export default defineComponent({
 </template>
 
 <style>
-.r-container{
-    flex-wrap:wrap;
+.r-container {
+    flex-wrap: wrap;
 }
 </style>
