@@ -30,14 +30,14 @@ export default {
                 path: "/",
                 name: "home",
                 label: "首页",
-                icon: "s-home",
+                icon: "house",
                 url: "Home/Home",
             },
             {
                 path: "/mall",
                 name: "mall",
                 label: "商品管理",
-                icon: "video-play",
+                icon: "document",
                 url: "MallManage/MallManage",
             },
             {
