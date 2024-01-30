@@ -2,7 +2,7 @@
     <el-header>
         <div class="l-content">
             <!-- 图标的展示 -->
-            <el-button size="small">
+            <el-button size="small" @click="handleCollapse">
                 <el-icon :size="20">
                     <Menu />
                 </el-icon>
@@ -26,16 +26,23 @@
 </template>
 
 <script>
-export default {
+import { defineComponent } from 'vue-demi';
+import { useStore } from 'vuex'
+export default defineComponent({
     setup() {
+        let store = useStore()
         const getImgSrc = (user) => {
             return new URL(`../assets/images/${user}.png`, import.meta.url).href;
         };
+        let handleCollapse = () => {
+            store.commit("updateIsCollapse")
+        }
         return {
             getImgSrc,
+            handleCollapse,
         };
-    }
-}
+    },
+})
 </script>
 
 <style lang="less" scoped>
@@ -58,9 +65,11 @@ header {
 .l-content {
     display: flex;
     align-items: center;
-    .el-button{
-        margin-right:20px;
+
+    .el-button {
+        margin-right: 20px;
     }
+
     h3 {
         color: #fff;
     }
