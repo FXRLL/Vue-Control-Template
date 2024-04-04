@@ -2,7 +2,7 @@
     <el-aside :width="$store.state.isCollapse ? '180px' : '64px'">
         <el-menu class="el-menu-vertical-demo" background-color="#545c64" text-color="#fff"
             :collapse="!$store.state.isCollapse" :collapse-transition="false">
-            <el-menu-item :index="item.path" v-for="item in noChildren()" :key="item.path" @click="clickMenu(item)">
+            <el-menu-item :index="item.path" v-for="item in noChildren()" :key="item.path">
                 <component class="icons" :is="item.icon"></component>
                 <span>{{ item.label }}</span>
             </el-menu-item>
@@ -12,8 +12,7 @@
                     <span>{{ item.label }}</span>
                 </template>
                 <el-menu-item-group>
-                    <el-menu-item :index="subItem.path" v-for="(subItem, subIndex) in item.children" :key="subIndex"
-                        @click="clickMenu(subItem)">
+                    <el-menu-item :index="subItem.path" v-for="(subItem, subIndex) in item.children" :key="subIndex">
                         <component class="icons" :is="subItem.icon"></component>
                         <span>{{ subItem.label }}</span>
                     </el-menu-item>
@@ -24,7 +23,6 @@
 </template>
 
 <script>
-import { useRouter } from 'vue-router'
 export default {
     setup() {
         const list = [
@@ -38,7 +36,7 @@ export default {
             {
                 path: "/mall",
                 name: "mall",
-                label: "货物管理",
+                label: "商品管理",
                 icon: "document",
                 url: "MallManage/MallManage",
             },
@@ -71,23 +69,16 @@ export default {
                 ],
             },
         ];
-        const router = useRouter();
         const noChildren = () => {
             return list.filter((item) => !item.children);
         };
         const hasChildren = () => {
-            return list.filter((item) => item.children);
-        };
-        const clickMenu = (item) => {
-            router.push({
-                name:item.name,
-            });
+            return list.filter((item) => item.children)
         };
         return {
             noChildren,
             hasChildren,
-            clickMenu,
-        };
+        }
     },
 }
 </script>
